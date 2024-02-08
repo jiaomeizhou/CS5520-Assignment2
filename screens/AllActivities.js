@@ -1,7 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Button} from 'react-native'
+import React, { useEffect } from 'react'
 
-export default function AllActivities() {
+export default function AllActivities({ navigation}) {
+
+    useEffect(() => {
+        navigation.setOptions({
+            headerRight: () => {
+                return <Button title="Add" onPress={() => navigation.navigate('AddAnActivity')} />
+            }
+        })
+    })
+
   return (
     <View>
       <Text>AllActivities</Text>
