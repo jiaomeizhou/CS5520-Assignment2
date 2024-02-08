@@ -9,7 +9,7 @@ export default function EmailInput({ inputHandler }) {
         setEmail(email)
         inputHandler(email)
     }
-
+    console.log('enter email: ', email)
     return (
         <View>
             <TextInput value={email} onChangeText={handleEmailInput}/>

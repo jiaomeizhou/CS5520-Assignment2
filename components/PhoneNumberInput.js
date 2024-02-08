@@ -8,6 +8,7 @@ export default function PhoneNumberInput({ inputHandler }) {
         setPhoneNumber(phoneNumber)
         inputHandler(phoneNumber)
     }
+    console.log('enter phoneNumber: ', phoneNumber)
 
     return (
         <View>

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 import EmailInput from '../components/EmailInput'
 import PhoneNumberInput from '../components/PhoneNumberInput'
@@ -10,9 +10,10 @@ export default function Start() {
     const [phoneNumber, setPhoneNumber] = React.useState('')
     const [emailError, setEmailError] = React.useState('')
     const [phoneNumberError, setPhoneNumberError] = React.useState('')
+    const [isDisabled, setIsDisabled] = React.useState(true)
 
     const validateEmail = () => {
-        if (email === '' || !email.includes('@') 
+        if (email === '' || !email.includes('@')
             || !email.includes('.') || email.indexOf('@') > email.lastIndexOf('.')) {
             setEmailError('Please enter a valid email address.')
         } else {
@@ -31,18 +32,45 @@ export default function Start() {
     function receiveEmailInput(email) {
         setEmail(email)
     }
+    console.log('receive email: ', email)
 
     function receivePhoneNumberInput(phoneNumber) {
         setPhoneNumber(phoneNumber)
+    }
+    console.log('receive phoneNumber: ', phoneNumber)
+
+    function startHandler() {
+        validateEmail()
+        validatePhoneNumber()
+    }
+
+    function resetHandler() {
+        setEmail('')
+        setPhoneNumber('')
+        setEmailError('')
+        setPhoneNumberError('')
+    }
+
+    console.log('error:', emailError, phoneNumberError)
+
+    // The Start button is disabled until user types something in one of the TextInputs.
+    function disableStartHandler() {
+        return email === '' && phoneNumber === ''
     }
 
     return (
         <View>
             <View>
                 <Text>Email Address</Text>
-                <EmailInput inputHandler={receiveEmailInput}/>
+                <EmailInput inputHandler={receiveEmailInput} />
+                {emailError !== '' && <Text>{emailError}</Text>}
                 <Text>Phone Number</Text>
-                <PhoneNumberInput inputHandler={receivePhoneNumberInput}/>
+                <PhoneNumberInput inputHandler={receivePhoneNumberInput} />
+                {phoneNumberError !== '' && <Text>{phoneNumberError}</Text>}
+            </View>
+            <View>
+                <Button title='Start' onPress={startHandler} disabled={disableStartHandler()} />
+                <Button title='Reset' onPress={resetHandler} />
             </View>
         </View>
     )
