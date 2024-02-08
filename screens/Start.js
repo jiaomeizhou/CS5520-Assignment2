@@ -5,7 +5,7 @@ import PhoneNumberInput from '../components/PhoneNumberInput'
 
 // This is the first screen that the user sees when starting the app.
 // There are two Texts, two TextInputs, and two Buttons.
-export default function Start() {
+export default function Start({ navigation}) {
     const [email, setEmail] = React.useState('')
     const [phoneNumber, setPhoneNumber] = React.useState('')
     const [emailError, setEmailError] = React.useState('')
@@ -16,16 +16,20 @@ export default function Start() {
         if (email === '' || !email.includes('@')
             || !email.includes('.') || email.indexOf('@') > email.lastIndexOf('.')) {
             setEmailError('Please enter a valid email address.')
+            return false
         } else {
             setEmailError('')
+            return true
         }
     }
 
     const validatePhoneNumber = () => {
         if (phoneNumber === '' || phoneNumber.length !== 10 || isNaN(phoneNumber)) {
             setPhoneNumberError('Please enter a valid phone number.')
+            return false
         } else {
             setPhoneNumberError('')
+            return true
         }
     }
 
@@ -42,6 +46,10 @@ export default function Start() {
     function startHandler() {
         validateEmail()
         validatePhoneNumber()
+        if (validateEmail() && validatePhoneNumber()) {
+            navigation.navigate('AllActivities')
+        }
+        
     }
 
     function resetHandler() {
