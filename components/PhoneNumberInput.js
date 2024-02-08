@@ -1,11 +1,9 @@
 import { StyleSheet, Text, View, TextInput} from 'react-native'
 import React from 'react'
 
-export default function PhoneNumberInput({ inputHandler }) {
-    const [phoneNumber, setPhoneNumber] = React.useState('')
+export default function PhoneNumberInput({ inputHandler, phoneNumber}) {
 
     function handlePhoneNumberInput(phoneNumber) {
-        setPhoneNumber(phoneNumber)
         inputHandler(phoneNumber)
     }
     console.log('enter phoneNumber: ', phoneNumber)

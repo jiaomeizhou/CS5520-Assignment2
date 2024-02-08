@@ -62,10 +62,10 @@ export default function Start() {
         <View>
             <View>
                 <Text>Email Address</Text>
-                <EmailInput inputHandler={receiveEmailInput} />
+                <EmailInput inputHandler={receiveEmailInput} email={email}/>
                 {emailError !== '' && <Text>{emailError}</Text>}
                 <Text>Phone Number</Text>
-                <PhoneNumberInput inputHandler={receivePhoneNumberInput} />
+                <PhoneNumberInput inputHandler={receivePhoneNumberInput} phoneNumber={phoneNumber}/>
                 {phoneNumberError !== '' && <Text>{phoneNumberError}</Text>}
             </View>
             <View>
