@@ -1,14 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import Start from './screens/Start'
-import AddAnActivity from './screens/AddAnActivity'
-import SpecialActivities from './screens/SpecialActivities'
-import AllActivities from './screens/AllActivities'
+import Start from './screens/Start';
+import AddAnActivity from './screens/AddAnActivity';
+import SpecialActivities from './screens/SpecialActivities';
+import AllActivities from './screens/AllActivities';
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
