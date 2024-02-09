@@ -29,7 +29,7 @@ export default function BottomTab({ navigation}) {
         options={{
           tabBarLabel: 'Special Activities',
           tabBarIcon: ({ }) => (
-            <AntDesign name="exclamation" size={24} color="grey" /> // the color of icon becomes yellow when it is active
+            <AntDesign name="exclamation" size={24} color="grey" /> // TODO: the color of icon becomes yellow when it is active
           ),
 
         }}
