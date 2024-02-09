@@ -9,7 +9,7 @@ import SpecialActivities from './screens/SpecialActivities';
 import AllActivities from './screens/AllActivities';
 import BottomTab from './components/BottomTab';
 
-
+// TODO: cancel the left top back label for AddAnActivity screen
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -17,8 +17,13 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Start" component={Start} />
-        <Stack.Screen name="AddAnActivity" component={AddAnActivity} />
-        <Stack.Screen name="AllActivities" component={BottomTab} />
+        <Stack.Screen name="AddAnActivity" component={AddAnActivity} options={
+          {headerBackTitleVisible: false,}
+        }/>
+        <Stack.Screen name="AllActivities" component={BottomTab} options={
+          { headerShown: false }
+        } />
+        {/* <Stack.Screen name="SpecialActivities" component={BottomTab} /> */}
       </Stack.Navigator>
 
     </NavigationContainer>

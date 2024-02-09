@@ -10,7 +10,6 @@ export default function Start({ navigation}) {
     const [phoneNumber, setPhoneNumber] = React.useState('')
     const [emailError, setEmailError] = React.useState('')
     const [phoneNumberError, setPhoneNumberError] = React.useState('')
-    const [isDisabled, setIsDisabled] = React.useState(true)
 
     const validateEmail = () => {
         if (email === '' || !email.includes('@')

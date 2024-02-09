@@ -4,18 +4,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AllActivities from '../screens/AllActivities';
 import SpecialActivities from '../screens/SpecialActivities';
 import { FontAwesome } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 
 const Tab = createBottomTabNavigator();
 
 export default function BottomTab({ navigation}) {
-  useEffect(() => {
-    navigation.setOptions({
-      headerRight: () => {
-        return <Button title="Add" onPress={() => navigation.navigate('AddAnActivity')} />
-      }
-    })
-  })
 
   return (
     <Tab.Navigator>
@@ -34,7 +28,10 @@ export default function BottomTab({ navigation}) {
         component={SpecialActivities}
         options={{
           tabBarLabel: 'Special Activities',
-          // Add your icon for Special Activities
+          tabBarIcon: ({ }) => (
+            <AntDesign name="exclamation" size={24} color="grey" /> // the color of icon becomes yellow when it is active
+          ),
+
         }}
       />
     </Tab.Navigator>
