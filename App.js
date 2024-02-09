@@ -7,6 +7,8 @@ import Start from './screens/Start';
 import AddAnActivity from './screens/AddAnActivity';
 import SpecialActivities from './screens/SpecialActivities';
 import AllActivities from './screens/AllActivities';
+import BottomTab from './components/BottomTab';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -16,10 +18,11 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="Start" component={Start} />
         <Stack.Screen name="AddAnActivity" component={AddAnActivity} />
-        <Stack.Screen name="SpecialActivities" component={SpecialActivities} />
-        <Stack.Screen name="AllActivities" component={AllActivities} />
+        <Stack.Screen name="AllActivities" component={BottomTab} />
       </Stack.Navigator>
+
     </NavigationContainer>
+
   );
 }
 

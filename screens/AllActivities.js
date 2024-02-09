@@ -15,6 +15,7 @@ export default function AllActivities({ navigation}) {
     <View>
       <Text>AllActivities</Text>
     </View>
+    
   )
 }
 
