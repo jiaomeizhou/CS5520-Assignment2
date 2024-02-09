@@ -3,14 +3,6 @@ import React, { useEffect } from 'react'
 
 export default function AllActivities({ navigation}) {
 
-    useEffect(() => {
-        navigation.setOptions({
-            headerRight: () => {
-                return <Button title="Add" onPress={() => navigation.navigate('AddAnActivity')} />
-            }
-        })
-    })
-
   return (
     <View>
       <Text>AllActivities</Text>

@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Button} from 'react-native'
+import React, { useEffect } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AllActivities from '../screens/AllActivities';
 import SpecialActivities from '../screens/SpecialActivities';
@@ -8,7 +8,15 @@ import { FontAwesome } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
-export default function BottomTab() {
+export default function BottomTab({ navigation}) {
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => {
+        return <Button title="Add" onPress={() => navigation.navigate('AddAnActivity')} />
+      }
+    })
+  })
+
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -16,7 +24,7 @@ export default function BottomTab() {
         component={AllActivities}
         options={{
           tabBarLabel: 'All Activities',
-          tabBarIcon: ({}) => (
+          tabBarIcon: ({ }) => (
             <FontAwesome name="dollar" size={24} color={'grey'} />
           ),
         }}
