@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
 import AddActivityButton from '../components/AddActivityButton'
+import ActivityList from '../components/ActivityList'
 
 export default function SpecialActivities({ navigation }) {
     useEffect(() => {
@@ -12,7 +13,7 @@ export default function SpecialActivities({ navigation }) {
     })
     return (
         <View>
-            <Text>SpecialActivities</Text>
+            <ActivityList currentScreen={"SpecialActivities"} />
         </View>
     )
 }

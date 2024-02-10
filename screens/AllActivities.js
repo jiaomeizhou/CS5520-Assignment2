@@ -15,7 +15,7 @@ export default function AllActivities({ navigation }) {
 
     return (
         <View>
-            <ActivityList />
+            <ActivityList currentScreen={"AllActivities"}/>
         </View>
     )
 }

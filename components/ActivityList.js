@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native'
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useActivity } from './ActivityContext';
 import ActivityItem from './ActivityItem';
 
-export default function ActivityList({}) {
+export default function ActivityList({ currentScreen }) {
     const { state } = useActivity();
     const { activities } = state;
-    const [SpecialActivities, setSpecialActivities] = useState([]);
-    console.log(activities);
+    const [specialActivities, setSpecialActivities] = useState([]);
+    console.log("activities:", activities);
 
     useEffect(() => {
         const getSpecialActivities = () => {
@@ -20,10 +20,17 @@ export default function ActivityList({}) {
         getSpecialActivities();
     }, [activities]);
 
+    console.log('currentScreen', currentScreen);
+    console.log('specialActivities', specialActivities);
+
     return (
         <View>
             <FlatList
-                data={activities}
+                data={
+                    currentScreen === 'SpecialActivities'
+                        ? specialActivities
+                        : activities
+                }
                 renderItem={({ item }) => {
                     return (
                         <ActivityItem activityObj={item} />
