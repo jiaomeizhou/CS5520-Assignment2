@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View, Button } from 'react-native'
 import React, { useEffect } from 'react'
 import AddActivityButton from '../components/AddActivityButton'
+import ActivityList from '../components/ActivityList'
 
 export default function AllActivities({ navigation }) {
+
     useEffect(() => {
         navigation.setOptions({
             headerRight: () => {
@@ -13,9 +15,8 @@ export default function AllActivities({ navigation }) {
 
     return (
         <View>
-            <Text>AllActivities</Text>
+            <ActivityList />
         </View>
-
     )
 }
 

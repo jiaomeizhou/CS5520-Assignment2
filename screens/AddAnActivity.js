@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { useActivity } from '../components/ActivityContext';
 
-export default function AddAnActivity() {
+export default function AddAnActivity({ navigation }) {
   const [open, setOpen] = useState(false);
-  const [activityName, setActivityName] = useState(null);
+  const [name, setName] = useState(null);
   const [items, setItems] = useState([
     { label: 'Swimming', value: 'Swimming' },
     { label: 'Weights', value: 'Weights' },
@@ -14,70 +15,84 @@ export default function AddAnActivity() {
     { label: 'Cycling', value: 'Cycling' },
     { label: 'Hiking', value: 'Hiking' },
   ]);
-  const [activityDuration, setActivityDuration] = useState(null);
-  const [activityDate, setActivityDate] = useState(null);
+  const [duration, setDuration] = useState(null);
+  const [date, setDate] = useState(null);
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
+  const { state, dispatch } = useActivity();
+  const { activities } = state;
 
   function handleActivityNameInput(activityName) {
-    setActivityName(activityName)
+    setName(activityName)
   }
 
-  function handleActivityDurationInput(activityDuration) {
-    setActivityDuration(activityDuration)
+  function handleActivityDurationInput(duration) {
+    setDuration(duration)
   }
 
   const handleActivityDateInput = (event, selectedDate) => {
-    const currentDate = selectedDate || activityDate;
+    const currentDate = selectedDate || date;
     setShow(false);
-    setActivityDate(currentDate);
+    setDate(currentDate);
   };
 
   function handleSaveActivity() {
     console.log('save activity')
+    const newActivity = {
+      name: name,
+      duration: duration,
+      date: date,
+    };
+
+    // Dispatch an action to save the activity to the context
+    dispatch({ type: 'SAVE_ACTIVITY', payload: newActivity });
+    // Navigate to the previous screen
+    navigation.goBack();
   }
 
   function handleCancelActivity() {
     console.log('cancel activity')
-    setActivityName(null)
-    setActivityDuration(null)
-    setActivityDate(new Date())
+    setName(null)
+    setDuration(null)
+    setDate(new Date())
+    navigation.goBack();
   }
 
 
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-    <View>
-      <Text>Activity *</Text>
-      <DropDownPicker
-        open={open}
-        value={activityName}
-        items={items}
-        setOpen={setOpen}
-        setValue={setActivityName}
-        setItems={setItems}
-        placeholder='Select An Activity'
-      />
-      <Text>Duration (min) *</Text>
-      <TextInput type="number" value={activityDuration} onChangeText={handleActivityDurationInput}/>
-      <Text>Date *</Text>
-      {/* // TODO: there is a bug, the default value should be empty */}
-      <TextInput value={activityDate? activityDate.toDateString() : ''} onFocus={() => setShow(true)}/>
-      {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={activityDate}
-          mode={mode}
-          is24Hour={true}
-          onChange={handleActivityDateInput}
-          display="inline"
+      <View>
+        <Text>Activity *</Text>
+        <DropDownPicker
+          open={open}
+          value={name}
+          items={items}
+          setOpen={setOpen}
+          setValue={setName}
+          setItems={setItems}
+          placeholder='Select An Activity'
+          onChangeValue={handleActivityNameInput}
         />
-      )}
-      <Button title="Cancel" color="red" onPress={handleCancelActivity} />
-       {/* TOTO: handle save activity */}
-      <Button title="Save" onPress={handleSaveActivity} />
-    </View>
+        <Text>Duration (min) *</Text>
+        <TextInput type="number" value={duration} onChangeText={handleActivityDurationInput} />
+        <Text>Date *</Text>
+        {/* // TODO: there is a bug, the default value should be empty */}
+        <TextInput value={date ? date.toDateString() : new Date().toDateString()} onFocus={() => setShow(true)} />
+        {show && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={date || new Date()}
+            mode={mode}
+            is24Hour={true}
+            onChange={handleActivityDateInput}
+            display="inline"
+          />
+        )}
+        <Button title="Cancel" color="red" onPress={handleCancelActivity} />
+        {/* TOTO: handle save activity */}
+        <Button title="Save" onPress={handleSaveActivity} />
+      </View>
     </TouchableWithoutFeedback>
   )
 }
