@@ -12,4 +12,13 @@ export const Styles = StyleSheet.create({
         marginBottom: 20,
         borderRadius: 10,
     },
+    header: {
+        backgroundColor: Colors.headerColorPurple,
+    },
+    headerTitle: {
+        color : Colors.primaryWhiteColor,
+    },
+    bottomTab: {
+        backgroundColor: Colors.headerColorPurple,
+    },
 })

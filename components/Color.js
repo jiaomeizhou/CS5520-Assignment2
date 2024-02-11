@@ -1,5 +1,5 @@
 export const primaryPurpleColor = '#363678';
-export const primaryWhiteColor = '#fff';
+export const primaryWhiteColor = 'white';
 export const primaryBackgroundColor = '#AAA9C9';
 export const textInputBackgroundColor = '#B2B2D7';
 export const buttonColorRed = '#f4511e';
