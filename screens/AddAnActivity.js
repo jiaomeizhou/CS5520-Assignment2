@@ -16,7 +16,7 @@ export default function AddAnActivity({ navigation }) {
     { label: 'Hiking', value: 'Hiking' },
   ]);
   const [duration, setDuration] = useState(null);
-  const [date, setDate] = useState(null);
+  const [date, setDate] = useState('');
   const [isSpecial, setIsSpecial] = useState(false);
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
@@ -87,8 +87,7 @@ export default function AddAnActivity({ navigation }) {
         <Text>Duration (min) *</Text>
         <TextInput type="number" value={duration} onChangeText={handleActivityDurationInput} />
         <Text>Date *</Text>
-        {/* // TODO: there is a bug, the default value should be empty */}
-        <TextInput value={date ? date.toDateString() : new Date().toDateString()} onFocus={() => setShow(true)} />
+        <TextInput value={date ? date.toDateString() : ''} onFocus={() => setShow(true)} />
         {show && (
           <DateTimePicker
             testID="dateTimePicker"
@@ -100,7 +99,6 @@ export default function AddAnActivity({ navigation }) {
           />
         )}
         <Button title="Cancel" color="red" onPress={handleCancelActivity} />
-        {/* TOTO: handle save activity */}
         <Button title="Save" onPress={handleSaveActivity} />
       </View>
     </TouchableWithoutFeedback>
