@@ -17,13 +17,14 @@ export default function AddAnActivity({ navigation }) {
   ]);
   const [duration, setDuration] = useState(null);
   const [date, setDate] = useState(null);
+  const [isSpecial, setIsSpecial] = useState(false);
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
   const { state, dispatch } = useActivity();
   const { activities } = state;
 
-  function handleActivityNameInput(activityName) {
-    setName(activityName)
+  function handleActivityNameInput(name) {
+    setName(name)
   }
 
   function handleActivityDurationInput(duration) {
@@ -36,12 +37,21 @@ export default function AddAnActivity({ navigation }) {
     setDate(currentDate);
   };
 
+  const handleSpecialActivity = (name) => {
+    if ((name === 'Running' || name === 'Weights') && duration > 60) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   function handleSaveActivity() {
     console.log('save activity')
     const newActivity = {
       name: name,
       duration: duration,
       date: date,
+      isSpecial: handleSpecialActivity(name),
     };
 
     // Dispatch an action to save the activity to the context

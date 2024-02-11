@@ -12,7 +12,7 @@ export default function ActivityList({ currentScreen }) {
     useEffect(() => {
         const getSpecialActivities = () => {
             const specialList = activities.filter(activity =>
-                (activity.name === 'Running' || activity.name === 'Weights') && activity.duration > 60
+                activity.isSpecial === true
             );
             setSpecialActivities(specialList);
         };
