@@ -9,6 +9,7 @@ import SpecialActivities from './screens/SpecialActivities';
 import AllActivities from './screens/AllActivities';
 import BottomTab from './components/BottomTab';
 import { ActivityProvider } from './components/ActivityContext';
+import * as Colors from './components/Color.js';
 
 // TODO: cancel the left top back label for AddAnActivity screen
 const Stack = createNativeStackNavigator();
@@ -18,7 +19,7 @@ export default function App() {
     <ActivityProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Start" component={Start} />
+          <Stack.Screen name="Start" component={Start} options={{headerShown : false}}/>
           <Stack.Screen name="AddAnActivity" component={AddAnActivity} options={
             { headerBackTitleVisible: false, }
           } />

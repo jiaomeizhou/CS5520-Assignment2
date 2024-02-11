@@ -9,7 +9,9 @@ export default function AddAnActivity({ navigation }) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState(null);
   const [items, setItems] = useState([
-    { label: 'Swimming', value: 'Swimming' },
+    { label: 'Walking', value: 'Walking' },
+    { label: 'Running', value: 'Running' },
+    { label: 'Swimming', value: 'Swimming'},
     { label: 'Weights', value: 'Weights' },
     { label: 'Yoga', value: 'Yoga' },
     { label: 'Cycling', value: 'Cycling' },

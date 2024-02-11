@@ -5,14 +5,14 @@ import AllActivities from '../screens/AllActivities';
 import SpecialActivities from '../screens/SpecialActivities';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-
+import * as Colors from './Color'
 
 const Tab = createBottomTabNavigator();
 
-export default function BottomTab({ navigation}) {
+export default function Activities({ navigation}) {
 
   return (
-    <Tab.Navigator>
+    <Tab.Navigator style={styles.header}>
       <Tab.Screen
         name="AllActivities"
         component={AllActivities}
@@ -38,4 +38,9 @@ export default function BottomTab({ navigation}) {
   );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: Colors.primaryPurpleColor,
+    color: Colors.primaryWhiteColor,
+  },
+})

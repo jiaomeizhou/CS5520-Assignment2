@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TextInput} from 'react-native'
 import React from 'react'
+import { Styles } from './Styles'
 
 export default function PhoneNumberInput({ inputHandler, phoneNumber}) {
 
@@ -10,7 +11,7 @@ export default function PhoneNumberInput({ inputHandler, phoneNumber}) {
 
     return (
         <View>
-            <TextInput value={phoneNumber} onChangeText={handlePhoneNumberInput} />
+            <TextInput value={phoneNumber} onChangeText={handlePhoneNumberInput} style={Styles.textInput}/>
         </View>
     )
 }
