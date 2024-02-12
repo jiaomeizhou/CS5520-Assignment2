@@ -34,10 +34,14 @@ export default function Start({ navigation }) {
 
     function receiveEmailInput(email) {
         setEmail(email)
+        setEmailError(''); // Clear the error message when typing
+        setPhoneNumberError('');
     }
 
     function receivePhoneNumberInput(phoneNumber) {
         setPhoneNumber(phoneNumber)
+        setPhoneNumberError(''); // Clear the error message when typing
+        setEmailError(''); 
     }
 
     function startHandler() {

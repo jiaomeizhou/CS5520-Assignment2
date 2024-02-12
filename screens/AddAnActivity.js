@@ -59,7 +59,7 @@ export default function AddAnActivity({ navigation }) {
   }
 
   function validateInputs() {
-    if (!name || !duration || isNaN(duration) || duration < 0) {
+    if (!date || !name || !duration || isNaN(duration) || duration <= 0) {
       alert('Please enter valid values for all fields.');
       return false;
     }
