@@ -44,5 +44,38 @@ export const Styles = StyleSheet.create({
         fontSize: 16,
         color: Colors.primaryPurpleColor,
         fontWeight: 'bold',
-    }
+    },
+    flatList: {
+        marginTop: 20,
+    },
+    activityItem: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: 'auto',
+        borderWidth: 2,
+        borderColor: Colors.primaryPurpleColor,
+        backgroundColor: Colors.headerColorPurple,
+        padding: 10,
+        marginTop: 20,
+        marginHorizontal: 20,
+        borderRadius: 10,
+    },
+    activityText: {
+        fontSize: 14,
+        color: Colors.primaryWhiteColor,
+        fontWeight: 'bold',
+    },
+    activityDateDurationContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    activityDateDuration: {
+        backgroundColor: Colors.primaryWhiteColor,
+        color: Colors.primaryPurpleColor,
+        fontSize: 14,
+        fontWeight: 'bold',
+        padding: 5,
+        marginRight: 3,
+    },
+    
 })

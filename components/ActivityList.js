@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, FlatList } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { useActivity } from './ActivityContext';
 import ActivityItem from './ActivityItem';
+import { Styles } from './Styles'
 
 export default function ActivityList({ currentScreen }) {
     const { state } = useActivity();
@@ -24,7 +25,7 @@ export default function ActivityList({ currentScreen }) {
     console.log('specialActivities', specialActivities);
 
     return (
-        <View>
+        <View >
             <FlatList
                 data={
                     currentScreen === 'SpecialActivities'
