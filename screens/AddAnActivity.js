@@ -58,8 +58,19 @@ export default function AddAnActivity({ navigation }) {
     }
   }
 
+  function validateInputs() {
+    if (!name || !duration || isNaN(duration) || duration < 0) {
+      alert('Please enter valid values for all fields.');
+      return false;
+    }
+    return true;
+  }
+
   function handleSaveActivity() {
     console.log('save activity')
+    if (!validateInputs()) {
+      return;
+    }
     const newActivity = {
       name: name,
       duration: duration,
