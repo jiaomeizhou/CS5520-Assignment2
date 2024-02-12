@@ -1,17 +1,28 @@
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { useActivity } from '../components/ActivityContext';
+import { Styles } from '../components/Styles'
+import * as Colors from '../components/Color'
+import MyTextInput from '../components/MyTextInput'
 
 export default function AddAnActivity({ navigation }) {
+  useEffect(() => {
+    navigation.setOptions({
+      headerTitle: "Add An Activity",
+      headerStyle: Styles.header,
+      headerShown: true,
+      headerTitleStyle: Styles.headerTitle,
+    })
+  })
   const [open, setOpen] = useState(false);
   const [name, setName] = useState(null);
   const [items, setItems] = useState([
     { label: 'Walking', value: 'Walking' },
     { label: 'Running', value: 'Running' },
-    { label: 'Swimming', value: 'Swimming'},
+    { label: 'Swimming', value: 'Swimming' },
     { label: 'Weights', value: 'Weights' },
     { label: 'Yoga', value: 'Yoga' },
     { label: 'Cycling', value: 'Cycling' },
@@ -70,12 +81,10 @@ export default function AddAnActivity({ navigation }) {
     navigation.goBack();
   }
 
-
-
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View>
-        <Text>Activity *</Text>
+      <View style={Styles.container}>
+        <Text style={Styles.inputHeader}>Activity *</Text>
         <DropDownPicker
           open={open}
           value={name}
@@ -85,11 +94,11 @@ export default function AddAnActivity({ navigation }) {
           setItems={setItems}
           placeholder='Select An Activity'
           onChangeValue={handleActivityNameInput}
+          style={Styles.textInput}
         />
-        <Text>Duration (min) *</Text>
-        <TextInput type="number" value={duration} onChangeText={handleActivityDurationInput} />
-        <Text>Date *</Text>
-        <TextInput value={date ? date.toDateString() : ''} onFocus={() => setShow(true)} />
+        <MyTextInput label="Duration (min) *" value={duration} onChangeText={handleActivityDurationInput} type={"number"} />
+        <Text style={Styles.inputHeader}>Date *</Text>
+        <TextInput value={date ? date.toDateString() : ''} onFocus={() => setShow(true)} style={Styles.textInput}/>
         {show && (
           <DateTimePicker
             testID="dateTimePicker"
@@ -100,8 +109,10 @@ export default function AddAnActivity({ navigation }) {
             display="inline"
           />
         )}
-        <Button title="Cancel" color="red" onPress={handleCancelActivity} />
-        <Button title="Save" onPress={handleSaveActivity} />
+        <View style={Styles.buttonsView}>
+          <Button title="Cancel" color={Colors.cancelResetColorRed} onPress={handleCancelActivity} />
+          <Button title="Save" onPress={handleSaveActivity} />
+        </View>
       </View>
     </TouchableWithoutFeedback>
   )

@@ -2,7 +2,9 @@ import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 import EmailInput from '../components/EmailInput'
 import PhoneNumberInput from '../components/PhoneNumberInput'
-import * as Colors from '../components/Color.js';
+import { Styles } from '../components/Styles'
+import * as Colors from '../components/Color'
+import MyTextInput from '../components/MyTextInput'
 
 export default function Start({ navigation }) {
     const [email, setEmail] = React.useState('')
@@ -59,16 +61,18 @@ export default function Start({ navigation }) {
     }
 
     return (
-        <View style={styles.container}>
+        <View style={Styles.container}>
             <View>
-                <Text style={styles.inputHeader}>Email Address</Text>
-                <EmailInput inputHandler={receiveEmailInput} email={email} />
-                {emailError !== '' && <Text style={styles.errorText}>{emailError}</Text>}
-                <Text style={styles.inputHeader}>Phone Number</Text>
-                <PhoneNumberInput inputHandler={receivePhoneNumberInput} phoneNumber={phoneNumber} />
-                {phoneNumberError !== '' && <Text style={styles.errorText}>{phoneNumberError}</Text>}
+                {/* <Text style={Styles.inputHeader}>Email Address</Text>
+                <EmailInput inputHandler={receiveEmailInput} email={email} /> */}
+                <MyTextInput label='Email Address' value={email} onChangeText={receiveEmailInput} />
+                {emailError !== '' && <Text style={Styles.errorText}>{emailError}</Text>}
+                {/* <Text style={Styles.inputHeader}>Phone Number</Text>
+                <PhoneNumberInput inputHandler={receivePhoneNumberInput} phoneNumber={phoneNumber} /> */}
+                <MyTextInput label='Phone Number' value={phoneNumber} onChangeText={receivePhoneNumberInput} />
+                {phoneNumberError !== '' && <Text style={Styles.errorText}>{phoneNumberError}</Text>}
             </View>
-            <View style={styles.buttonsView}>
+            <View style={Styles.buttonsView}>
                 <Button title='Reset' onPress={resetHandler} color={Colors.cancelResetColorRed}/>
                 <Button title='Start' onPress={startHandler} disabled={disableStartHandler()} />
             </View>
@@ -76,29 +80,3 @@ export default function Start({ navigation }) {
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: Colors.primaryBackgroundColor,
-        padding: 20,
-    },
-    buttonsView: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 20,
-    },
-    inputText: {
-        fontSize: 16,
-        color: Colors.primaryPurpleColor,
-    },
-    errorText: {
-        color: Colors.warningColorBlack,
-        fontSize: 14,
-    },
-    inputHeader: {
-        fontSize: 16,
-        color: Colors.primaryPurpleColor,
-        fontWeight: 'bold',
-    }
-});
