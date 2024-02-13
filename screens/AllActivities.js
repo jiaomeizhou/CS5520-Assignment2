@@ -3,10 +3,11 @@ import React, { useEffect } from 'react'
 import AddActivityButton from '../components/AddActivityButton'
 import ActivityList from '../components/ActivityList'
 import { Styles } from '../components/Styles'
-import * as Colors from '../components/Color'
 
+// This screen shows all activities
 export default function AllActivities({ navigation }) {
 
+    // set header options for this screen
     useEffect(() => {
         navigation.setOptions({
             headerRight: () => {
@@ -21,9 +22,8 @@ export default function AllActivities({ navigation }) {
 
     return (
         <View>
+            {/* show all activities */}
             <ActivityList currentScreen={"AllActivities"} />
         </View>
     )
 }
-
-const styles = StyleSheet.create({})

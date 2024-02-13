@@ -4,6 +4,7 @@ import { Entypo } from '@expo/vector-icons';
 import { Styles } from './Styles'
 import * as Colors from './Color'
 
+// This component is a single activity item with name, date, and duration
 export default function ActivityItem({ activityObj }) {
     return (
         <View style={Styles.activityItem}>
@@ -16,5 +17,3 @@ export default function ActivityItem({ activityObj }) {
         </View>
     )
 }
-
-const styles = StyleSheet.create({})

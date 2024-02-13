@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native'
 import * as Colors from './Color'
 
+// Styles for the app
 export const Styles = StyleSheet.create({
     textInput: {
         width: '100%',
@@ -17,6 +18,7 @@ export const Styles = StyleSheet.create({
     },
     headerTitle: {
         color : Colors.primaryWhiteColor,
+        alignSelf: 'center',
     },
     bottomTab: {
         backgroundColor: Colors.headerColorPurple,

@@ -1,8 +1,8 @@
-// ActivityTextInput.js
 import React from 'react';
 import { Text, TextInput } from 'react-native';
 import { Styles } from './Styles';
 
+// This component is a text input with a label displayed above it
 export default function MyTextInput({ label, value, onChangeText, keyboardType}) {
   function handleInput(value) {
     onChangeText(value)

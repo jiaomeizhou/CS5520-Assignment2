@@ -8,6 +8,7 @@ import { AntDesign } from '@expo/vector-icons';
 import * as Colors from './Color'
 import { Styles } from './Styles'
 
+// This component is the bottom tab navigator for AllActivities and SpecialActivities
 const Tab = createBottomTabNavigator();
 
 export default function BottomTab({ navigation }) {
@@ -41,10 +42,3 @@ export default function BottomTab({ navigation }) {
     </Tab.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  header: {
-    backgroundColor: Colors.primaryPurpleColor,
-    color: Colors.primaryWhiteColor,
-  },
-})

@@ -1,17 +1,17 @@
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
-import EmailInput from '../components/EmailInput'
-import PhoneNumberInput from '../components/PhoneNumberInput'
 import { Styles } from '../components/Styles'
 import * as Colors from '../components/Color'
 import MyTextInput from '../components/MyTextInput'
 
+// This screen is the first screen of app and can navigate to the AllActivities screen
 export default function Start({ navigation }) {
     const [email, setEmail] = React.useState('')
     const [phoneNumber, setPhoneNumber] = React.useState('')
     const [emailError, setEmailError] = React.useState('')
     const [phoneNumberError, setPhoneNumberError] = React.useState('')
 
+    // validate email
     const validateEmail = () => {
         if (email === '' || !email.includes('@') || !email.includes('.') || email.indexOf('@') > email.lastIndexOf('.')) {
             setEmailError('Please enter a valid email address.')
@@ -22,6 +22,7 @@ export default function Start({ navigation }) {
         }
     }
 
+    // validate phone number
     const validatePhoneNumber = () => {
         if (phoneNumber === '' || phoneNumber.length !== 10 || isNaN(phoneNumber)) {
             setPhoneNumberError('Please enter a valid phone number.')
@@ -32,18 +33,21 @@ export default function Start({ navigation }) {
         }
     }
 
+    // receive email input
     function receiveEmailInput(email) {
         setEmail(email)
         setEmailError(''); // Clear the error message when typing
         setPhoneNumberError('');
     }
 
+    // receive phone number input
     function receivePhoneNumberInput(phoneNumber) {
         setPhoneNumber(phoneNumber)
         setPhoneNumberError(''); // Clear the error message when typing
         setEmailError(''); 
     }
 
+    // start button handler
     function startHandler() {
         const isEmailValid = validateEmail();
         const isPhoneNumberValid = validatePhoneNumber();
@@ -53,6 +57,7 @@ export default function Start({ navigation }) {
         }
     }
 
+    // reset button handler
     function resetHandler() {
         setEmail('')
         setPhoneNumber('')
@@ -60,6 +65,7 @@ export default function Start({ navigation }) {
         setPhoneNumberError('')
     }
 
+    // disable start button
     function disableStartHandler() {
         return email === '' && phoneNumber === ''
     }
@@ -67,12 +73,8 @@ export default function Start({ navigation }) {
     return (
         <View style={Styles.container}>
             <View>
-                {/* <Text style={Styles.inputHeader}>Email Address</Text>
-                <EmailInput inputHandler={receiveEmailInput} email={email} /> */}
                 <MyTextInput label='Email Address' value={email} onChangeText={receiveEmailInput} keyboardType={"email-address"}/>
                 {emailError !== '' && <Text style={Styles.errorText}>{emailError}</Text>}
-                {/* <Text style={Styles.inputHeader}>Phone Number</Text>
-                <PhoneNumberInput inputHandler={receivePhoneNumberInput} phoneNumber={phoneNumber} /> */}
                 <MyTextInput label='Phone Number' value={phoneNumber} onChangeText={receivePhoneNumberInput} keyboardType={"phone-pad"}/>
                 {phoneNumberError !== '' && <Text style={Styles.errorText}>{phoneNumberError}</Text>}
             </View>

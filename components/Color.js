@@ -1,3 +1,4 @@
+// Store all the color codes used in the application.
 export const primaryPurpleColor = '#363678';
 export const primaryWhiteColor = 'white';
 export const primaryBackgroundColor = '#AAA9C9';

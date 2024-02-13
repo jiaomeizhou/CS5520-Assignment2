@@ -1,11 +1,13 @@
 import React, { createContext, useContext, useReducer } from 'react';
 
+// Create a context for the activity
 const ActivityContext = createContext();
 
 const initialState = {
   activities: [],
 };
 
+// Create a reducer for the activity
 const activityReducer = (state, action) => {
   switch (action.type) {
     case 'SAVE_ACTIVITY':
@@ -18,6 +20,7 @@ const activityReducer = (state, action) => {
   }
 };
 
+// Create a provider for the activity
 const ActivityProvider = ({ children }) => {
   const [state, dispatch] = useReducer(activityReducer, initialState);
 
@@ -28,6 +31,7 @@ const ActivityProvider = ({ children }) => {
   );
 };
 
+// Create a hook to use the activity
 const useActivity = () => {
   const context = useContext(ActivityContext);
   if (!context) {

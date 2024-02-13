@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Button } from 'react-native'
 import React, { useEffect } from 'react'
-import { Styles } from './Styles'
 import * as Colors from './Color'
 
+// This component is a button to navigate to AddAnActivity screen
 export default function AddActivityButton({ navigation }) {
 
   return (

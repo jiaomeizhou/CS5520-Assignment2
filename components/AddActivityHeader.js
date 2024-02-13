@@ -1,7 +1,7 @@
-// AddActivityHeader.js
 import React, { useEffect } from 'react';
 import { Styles } from '../components/Styles';
 
+// This component is the header for the AddActivity screen
 export default function AddActivityHeader({ navigation }) {
   useEffect(() => {
     navigation.setOptions({

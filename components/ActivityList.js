@@ -2,14 +2,15 @@ import { StyleSheet, Text, View, FlatList } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { useActivity } from './ActivityContext';
 import ActivityItem from './ActivityItem';
-import { Styles } from './Styles'
 
+// This component shows a list of activities based on the current screen
 export default function ActivityList({ currentScreen }) {
     const { state } = useActivity();
     const { activities } = state;
     const [specialActivities, setSpecialActivities] = useState([]);
     console.log("activities:", activities);
 
+    // get special activities
     useEffect(() => {
         const getSpecialActivities = () => {
             const specialList = activities.filter(activity =>
@@ -26,6 +27,7 @@ export default function ActivityList({ currentScreen }) {
 
     return (
         <View >
+            {/* show activities based on the current screen */}
             <FlatList
                 data={
                     currentScreen === 'SpecialActivities'
@@ -41,5 +43,3 @@ export default function ActivityList({ currentScreen }) {
         </View>
     )
 }
-
-const styles = StyleSheet.create({})
