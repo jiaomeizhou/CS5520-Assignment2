@@ -92,6 +92,13 @@ export default function AddAnActivity({ navigation }) {
     navigation.goBack();
   }
 
+  function toggleDateTimePicker() {
+    if (!date) {
+      setDate(new Date());
+    }
+    setShow(!show);
+  }
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={Styles.container}>
@@ -109,7 +116,7 @@ export default function AddAnActivity({ navigation }) {
         />
         <MyTextInput label="Duration (min) *" value={duration} onChangeText={handleActivityDurationInput} type={"number"} />
         <Text style={Styles.inputHeader}>Date *</Text>
-        <TextInput value={date ? date.toDateString() : ''} onFocus={() => setShow(true)} style={Styles.textInput}/>
+        <TextInput value={date ? date.toDateString() : ''} onFocus={toggleDateTimePicker} style={Styles.textInput}/>
         {show && (
           <DateTimePicker
             testID="dateTimePicker"
