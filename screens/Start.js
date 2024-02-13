@@ -69,11 +69,11 @@ export default function Start({ navigation }) {
             <View>
                 {/* <Text style={Styles.inputHeader}>Email Address</Text>
                 <EmailInput inputHandler={receiveEmailInput} email={email} /> */}
-                <MyTextInput label='Email Address' value={email} onChangeText={receiveEmailInput} />
+                <MyTextInput label='Email Address' value={email} onChangeText={receiveEmailInput} keyboardType={"email-address"}/>
                 {emailError !== '' && <Text style={Styles.errorText}>{emailError}</Text>}
                 {/* <Text style={Styles.inputHeader}>Phone Number</Text>
                 <PhoneNumberInput inputHandler={receivePhoneNumberInput} phoneNumber={phoneNumber} /> */}
-                <MyTextInput label='Phone Number' value={phoneNumber} onChangeText={receivePhoneNumberInput} />
+                <MyTextInput label='Phone Number' value={phoneNumber} onChangeText={receivePhoneNumberInput} keyboardType={"phone-pad"}/>
                 {phoneNumberError !== '' && <Text style={Styles.errorText}>{phoneNumberError}</Text>}
             </View>
             <View style={Styles.buttonsView}>

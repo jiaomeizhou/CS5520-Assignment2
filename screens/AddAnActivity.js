@@ -114,7 +114,7 @@ export default function AddAnActivity({ navigation }) {
           onChangeValue={handleActivityNameInput}
           style={Styles.textInput}
         />
-        <MyTextInput label="Duration (min) *" value={duration} onChangeText={handleActivityDurationInput} type={"number"} />
+        <MyTextInput label="Duration (min) *" value={duration} onChangeText={handleActivityDurationInput} keyboardType={"numeric"} />
         <Text style={Styles.inputHeader}>Date *</Text>
         <TextInput value={date ? date.toDateString() : ''} onFocus={toggleDateTimePicker} style={Styles.textInput}/>
         {show && (
