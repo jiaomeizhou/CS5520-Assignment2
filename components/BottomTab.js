@@ -10,7 +10,7 @@ import { Styles } from './Styles'
 
 const Tab = createBottomTabNavigator();
 
-export default function Activities({ navigation }) {
+export default function BottomTab({ navigation }) {
 
   return (
     <Tab.Navigator screenOptions={{

@@ -23,7 +23,7 @@ export default function App() {
           <Stack.Screen name="AddAnActivity" component={AddAnActivity} options={
             { headerBackTitleVisible: false, }
           } />
-          <Stack.Screen name="AllActivities" component={BottomTab} options={
+          <Stack.Screen name="AllActivitiesStack" component={BottomTab} options={
             { headerShown: false }
           } />
           {/* <Stack.Screen name="SpecialActivities" component={BottomTab} /> */}

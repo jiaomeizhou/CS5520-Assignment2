@@ -49,7 +49,7 @@ export default function Start({ navigation }) {
         const isPhoneNumberValid = validatePhoneNumber();
 
         if (isEmailValid && isPhoneNumberValid) {
-            navigation.navigate('AllActivities')
+            navigation.navigate('AllActivitiesStack')
         }
     }
 
