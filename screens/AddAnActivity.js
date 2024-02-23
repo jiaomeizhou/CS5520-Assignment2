@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, Button, Alert} from 'react-native'
+import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -126,7 +126,7 @@ export default function AddAnActivity({ navigation }) {
         />
         <MyTextInput label="Duration (min) *" value={duration} onChangeText={handleActivityDurationInput} keyboardType={"numeric"} />
         <Text style={Styles.inputHeader}>Date *</Text>
-        <TextInput value={date ? date.toDateString() : ''} onFocus={toggleDateTimePicker} style={Styles.textInput}/>
+        <TextInput value={date ? date.toDateString() : ''} onPressIn={toggleDateTimePicker} style={Styles.textInput} />
         {show && (
           <DateTimePicker
             testID="dateTimePicker"
@@ -137,10 +137,12 @@ export default function AddAnActivity({ navigation }) {
             display="inline"
           />
         )}
-        <View style={Styles.buttonsView}>
-          <Button title="Cancel" color={Colors.cancelResetColorRed} onPress={handleCancelActivity} />
-          <Button title="Save" onPress={handleSaveActivity} />
-        </View>
+        {!show && (
+          <View style={Styles.buttonsView}>
+            <Button title="Cancel" color={Colors.cancelResetColorRed} onPress={handleCancelActivity} />
+            <Button title="Save" onPress={handleSaveActivity} />
+          </View>
+        )}
       </View>
     </TouchableWithoutFeedback>
   )
