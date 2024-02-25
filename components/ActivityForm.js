@@ -6,9 +6,12 @@ import { TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { Styles } from '../components/Styles'
 import * as Colors from '../components/Color'
 import MyTextInput from '../components/MyTextInput'
+import { deleteFromDB } from '../firebase-files/firestoreHelper';
+import { AntDesign } from '@expo/vector-icons';
+import PressableButton from './PressableButton';
 
 // This screen is used to add an activity to the list of activities
-export default function ActivityForm({ title, onSubmit, onCancel, initialValues, navigation}) {
+export default function ActivityForm({ title, onSubmit, onCancel, initialValues, navigation }) {
     // Set the header options for this screen
     useEffect(() => {
         navigation.setOptions({
@@ -16,7 +19,16 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
             headerStyle: Styles.header,
             headerShown: true,
             headerTitleStyle: Styles.headerTitle,
-        })
+            ...(title === 'Edit' && {
+                headerRight: () => (
+                    <PressableButton
+                        onPress={handleDeleteActivity}
+                    >
+                        <AntDesign name="delete" size={24} color="black" />
+                    </PressableButton>
+                ),
+            }),
+        });
     })
     const [open, setOpen] = useState(false);
     const [name, setName] = useState(initialValues.name || null);
@@ -66,7 +78,7 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
         if (!validateInputs()) {
             return;
         }
-        onSubmit({name, duration, date});
+        onSubmit({ name, duration, date });
     }
 
     // Toggle the date time picker
@@ -75,6 +87,23 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
             setDate(new Date());
         }
         setShow(!show);
+    }
+
+    function handleDeleteActivity() {
+        Alert.alert(
+            "Delete",
+            "Are you sure you want to delete this item?",
+            [
+                {
+                    text: 'No',
+                },
+                {
+                    text: 'Yes',
+                    onPress: () => { deleteFromDB(initialValues.id), navigation.goBack()},
+                },
+            ],
+            { cancelable: false }
+        );
     }
 
     const newDate = date ? date.toDate() : null;

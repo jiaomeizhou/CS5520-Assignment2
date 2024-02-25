@@ -11,7 +11,7 @@ export default function EditActivity({ route, navigation }) {
 
         Alert.alert(
             "Impotant",
-            "Are you sure you want to update this activity?",
+            "Are you sure you want to save these changes?",
             [
                 {
                     text: 'No',
