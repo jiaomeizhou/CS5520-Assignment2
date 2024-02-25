@@ -7,6 +7,8 @@ import { useActivity } from '../components/ActivityContext';
 import { Styles } from '../components/Styles'
 import * as Colors from '../components/Color'
 import MyTextInput from '../components/MyTextInput'
+import { database } from "../firebase-files/firebaseSetup";
+import { writeToDB } from "../firebase-files/firestoreHelper";
 
 // This screen is used to add an activity to the list of activities
 export default function AddAnActivity({ navigation }) {
@@ -86,8 +88,9 @@ export default function AddAnActivity({ navigation }) {
       isSpecial: handleSpecialActivity(name),
     };
 
-    // Dispatch an action to save the activity to the context
-    dispatch({ type: 'SAVE_ACTIVITY', payload: newActivity });
+    // // Dispatch an action to save the activity to the context
+    // dispatch({ type: 'SAVE_ACTIVITY', payload: newActivity });
+    writeToDB(newActivity);
     // Navigate to the previous screen
     navigation.goBack();
   }
