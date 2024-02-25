@@ -51,15 +51,6 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
         setDate(currentDate);
     };
 
-    // Check if the activity is a special activity
-    const handleSpecialActivity = (name) => {
-        if ((name === 'Running' || name === 'Weights') && duration > 60) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     // Validate the inputs
     function validateInputs() {
         if (!date || !name || !duration || isNaN(duration) || duration <= 0) {
@@ -70,21 +61,12 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
         return true;
     }
 
-    // Save the activity to the context
+    // Save the activity to the database
     function handleSaveActivity() {
         if (!validateInputs()) {
             return;
         }
-        const newActivity = {
-            name: name,
-            duration: duration,
-            date: date,
-            isSpecial: handleSpecialActivity(name),
-        };
-
-        onSubmit(newActivity);
-        // Navigate to the previous screen
-        navigation.goBack();
+        onSubmit({name, duration, date});
     }
 
     // Toggle the date time picker
