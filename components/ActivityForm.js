@@ -42,7 +42,7 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
         { label: 'Hiking', value: 'Hiking' },
     ]);
     const [duration, setDuration] = useState(initialValues.duration || null);
-    const [date, setDate] = useState(initialValues.date || '');
+    const [date, setDate] = useState(initialValues.date ? initialValues.date.toDate() : '');
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
 
@@ -105,8 +105,7 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
             { cancelable: false }
         );
     }
-
-    const newDate = date ? date.toDate() : null;
+    console.log('date', date)
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -125,7 +124,7 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
                 />
                 <MyTextInput label="Duration (min) *" value={duration} onChangeText={handleActivityDurationInput} keyboardType={"numeric"} />
                 <Text style={Styles.inputHeader}>Date *</Text>
-                <TextInput value={newDate ? newDate.toDateString() : ''} onPressIn={toggleDateTimePicker} style={Styles.textInput} />
+                <TextInput value={date ? date.toDateString() : ''} onPressIn={toggleDateTimePicker} style={Styles.textInput} />
                 {show && (
                     <DateTimePicker
                         testID="dateTimePicker"
