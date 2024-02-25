@@ -4,20 +4,32 @@ import { updateDB } from '../firebase-files/firestoreHelper';
 import ActivityForm from '../components/ActivityForm';
 
 export default function EditActivity({ route, navigation }) {
-  const { activityDetails } = route.params;
+    const { activityDetails } = route.params;
 
-  const handleSaveActivity = (updatedActivity) => {
-    updatedActivity.isSpecial = activityDetails.isSpecial; // Preserve isSpecial value
-    updateDB(activityDetails.id, updatedActivity);
-    Alert.alert('Success', 'Activity updated successfully.');
-    navigation.goBack();
-  };
+    const handleSaveActivity = (updatedActivity) => {
+        updatedActivity.isSpecial = activityDetails.isSpecial; // Preserve isSpecial value
 
-  const handleCancelActivity = () => {
-    navigation.goBack();
-  };
+        Alert.alert(
+            "Impotant",
+            "Are you sure you want to update this activity?",
+            [
+                {
+                    text: 'No',
+                },
+                {
+                    text: 'Yes',
+                    onPress: () => {updateDB(activityDetails.id, updatedActivity), navigation.goBack()},
+                },
+            ],
+            { cancelable: false }
+        );
+    };
 
-  return (
-    <ActivityForm title="Edit" onSubmit={handleSaveActivity} onCancel={handleCancelActivity} initialValues={activityDetails} navigation={navigation}/>
-  );
+    const handleCancelActivity = () => {
+        navigation.goBack();
+    };
+
+    return (
+        <ActivityForm title="Edit" onSubmit={handleSaveActivity} onCancel={handleCancelActivity} initialValues={activityDetails} navigation={navigation} />
+    );
 }
