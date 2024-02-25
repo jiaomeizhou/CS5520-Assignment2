@@ -23,7 +23,7 @@ export default function SpecialActivities({ navigation }) {
     return (
         <View>
             {/* show all special activities */}
-            <ActivityList currentScreen={"SpecialActivities"} />
+            <ActivityList currentScreen={"SpecialActivities"} navigation={navigation}/>
         </View>
     )
 }

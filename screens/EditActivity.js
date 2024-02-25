@@ -1,4 +1,5 @@
 import React from 'react';
+import { Alert } from 'react-native';
 import { updateDB } from '../firebase-files/firestoreHelper';
 import ActivityForm from '../components/ActivityForm';
 
@@ -17,6 +18,6 @@ export default function EditActivity({ route, navigation }) {
   };
 
   return (
-    <ActivityForm title="Edit" onSubmit={handleSaveActivity} onCancel={handleCancelActivity} initialValues={activityDetails} />
+    <ActivityForm title="Edit" onSubmit={handleSaveActivity} onCancel={handleCancelActivity} initialValues={activityDetails} navigation={navigation}/>
   );
 }

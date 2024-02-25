@@ -6,8 +6,8 @@ import { collection, onSnapshot } from "firebase/firestore";
 import { database } from "../firebase-files/firebaseSetup";
 
 // This component shows a list of activities based on the current screen
-export default function ActivityList({ currentScreen }) {
-    const { state } = useActivity();
+export default function ActivityList({ currentScreen, navigation}) {
+    // const { state } = useActivity();
     // const { activities } = state;
     const [activities, setAllActivities] = useState([]);
     const [specialActivities, setSpecialActivities] = useState([]);
@@ -41,6 +41,10 @@ export default function ActivityList({ currentScreen }) {
     console.log('currentScreen', currentScreen);
     console.log('specialActivities', specialActivities);
 
+    function navidateToEditActivity(activityObj) {
+        navigation.navigate('EditActivity', { activityDetails: activityObj });
+    }
+
     return (
         <View >
             {/* show activities based on the current screen */}
@@ -52,7 +56,7 @@ export default function ActivityList({ currentScreen }) {
                 }
                 renderItem={({ item }) => {
                     return (
-                        <ActivityItem activityObj={item} />
+                        <ActivityItem activityObj={item} onEdit={navidateToEditActivity}/>
                     )
                 }}
             />

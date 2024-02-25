@@ -7,6 +7,7 @@ import Start from './screens/Start';
 import AddAnActivity from './screens/AddAnActivity';
 import SpecialActivities from './screens/SpecialActivities';
 import AllActivities from './screens/AllActivities';
+import EditActivity from './screens/EditActivity';
 import BottomTab from './components/BottomTab';
 import { ActivityProvider } from './components/ActivityContext';
 import * as Colors from './components/Color.js';
@@ -26,6 +27,7 @@ export default function App() {
           <Stack.Screen name="AllActivitiesStack" component={BottomTab} options={
             { headerShown: false }
           } />
+          <Stack.Screen name="EditActivity" component={EditActivity} options={ { headerBackTitleVisible: false } } />
           {/* <Stack.Screen name="SpecialActivities" component={BottomTab} /> */}
         </Stack.Navigator>
 

@@ -77,6 +77,8 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
         setShow(!show);
     }
 
+    const newDate = date ? date.toDate() : null;
+
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={Styles.container}>
@@ -94,7 +96,7 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
                 />
                 <MyTextInput label="Duration (min) *" value={duration} onChangeText={handleActivityDurationInput} keyboardType={"numeric"} />
                 <Text style={Styles.inputHeader}>Date *</Text>
-                <TextInput value={date ? date.toDateString() : ''} onPressIn={toggleDateTimePicker} style={Styles.textInput} />
+                <TextInput value={newDate ? newDate.toDateString() : ''} onPressIn={toggleDateTimePicker} style={Styles.textInput} />
                 {show && (
                     <DateTimePicker
                         testID="dateTimePicker"
