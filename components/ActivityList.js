@@ -2,13 +2,29 @@ import { StyleSheet, Text, View, FlatList } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { useActivity } from './ActivityContext';
 import ActivityItem from './ActivityItem';
+import { collection, onSnapshot } from "firebase/firestore";
+import { database } from "../firebase-files/firebaseSetup";
 
 // This component shows a list of activities based on the current screen
 export default function ActivityList({ currentScreen }) {
     const { state } = useActivity();
-    const { activities } = state;
+    // const { activities } = state;
+    const [activities, setAllActivities] = useState([]);
     const [specialActivities, setSpecialActivities] = useState([]);
-    console.log("activities:", activities);
+    console.log("allActivities:", activities);
+
+    useEffect(() => {
+        // set up a listener to get the data from the database, only after the first time
+        onSnapshot(collection(database, "activities"), (querySnapshot)=> {
+            // console.log("querySnapshot", querySnapshot);
+            const currentActivities = [];
+            querySnapshot.forEach((doc)=>{
+              console.log(doc.data());
+              currentActivities.push({...doc.data(), id: doc.id});
+            })
+            setAllActivities(currentActivities);
+        })
+      },[])
 
     // get special activities
     useEffect(() => {
