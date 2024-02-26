@@ -9,6 +9,7 @@ import MyTextInput from '../components/MyTextInput'
 import { deleteFromDB } from '../firebase-files/firestoreHelper';
 import { AntDesign } from '@expo/vector-icons';
 import PressableButton from './PressableButton';
+import Checkbox from 'expo-checkbox';
 
 // This screen is used to add an activity to the list of activities
 export default function ActivityForm({ title, onSubmit, onCancel, initialValues, navigation }) {
@@ -45,6 +46,8 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
     const [date, setDate] = useState(initialValues.date ? initialValues.date.toDate() : '');
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
+    const [isSpecial, setIsSpecial] = useState(initialValues.isSpecial);
 
     // Handle the input for the activity name
     function handleActivityNameInput(name) {
@@ -78,7 +81,7 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
         if (!validateInputs()) {
             return;
         }
-        onSubmit({ name, duration, date });
+        onSubmit({ name, duration, date, isSpecial: !isChecked });
     }
 
     // Toggle the date time picker
@@ -99,7 +102,7 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
                 },
                 {
                     text: 'Yes',
-                    onPress: () => { deleteFromDB(initialValues.id), navigation.goBack()},
+                    onPress: () => { deleteFromDB(initialValues.id), navigation.goBack() },
                 },
             ],
             { cancelable: false }
@@ -135,6 +138,19 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
                         display="inline"
                     />
                 )}
+                {/* checkbox to change the speciality of the activity */}
+                {isSpecial && (
+                    <View style={Styles.checkboxContainer}>
+                        <Text style={Styles.checkboxText}>
+                            This item is marked as special. Select the checkbox if you would like to approve it.
+                        </Text>
+                        <Checkbox
+                            value={isChecked}
+                            onValueChange={() => setIsChecked(!isChecked)}
+                        />
+                    </View>
+                )}
+
                 {!show && (
                     <View style={Styles.buttonsView}>
                         <Button title="Cancel" color={Colors.cancelResetColorRed} onPress={onCancel} />
@@ -145,3 +161,4 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
         </TouchableWithoutFeedback>
     )
 }
+

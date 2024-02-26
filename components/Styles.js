@@ -79,5 +79,15 @@ export const Styles = StyleSheet.create({
         padding: 5,
         marginRight: 3,
     },
+    checkboxContainer: {
+        flexDirection: 'row',
+        marginTop: 100,
+        margin: 10,
+    },
+    checkboxText: {
+        marginRight: 5,
+        color: Colors.primaryPurpleColor,
+        fontWeight: 'bold',
+    },
     
 })
