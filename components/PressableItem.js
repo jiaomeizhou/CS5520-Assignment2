@@ -4,7 +4,7 @@ import { Styles } from './Styles'
 
 export default function PressableItem({ onPress, children }) {
     return (
-        <Pressable onPress={onPress} style={({ pressed }) => [pressed && Styles.pressed]}>
+        <Pressable onPress={onPress} style={({ pressed }) => [pressed && Styles.pressedView]}>
             {children}
         </Pressable>)
 }

@@ -12,8 +12,8 @@ export default function EditActivity({ route, navigation }) {
     }
 
     const handleSaveActivity = (updatedActivity) => {
-        // updatedActivity.isSpecial = activityDetails.isSpecial; // Preserve isSpecial value
-        updatedActivity.isSpecial = handleSpecialActivity(updatedActivity.name, updatedActivity.duration);
+        // TODO: when the activity is updated, check if it is a special activity
+        // updatedActivity.isSpecial = handleSpecialActivity(updatedActivity.name, updatedActivity.duration);
         Alert.alert(
             "Impotant",
             "Are you sure you want to save these changes?",

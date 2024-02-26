@@ -1,8 +1,10 @@
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Button, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 import { Styles } from '../components/Styles'
 import * as Colors from '../components/Color'
 import MyTextInput from '../components/MyTextInput'
+import PressableItem from '../components/PressableItem'
+import PressableButton from '../components/PressableButton'
 
 // This screen is the first screen of app and can navigate to the AllActivities screen
 export default function Start({ navigation }) {
@@ -44,7 +46,7 @@ export default function Start({ navigation }) {
     function receivePhoneNumberInput(phoneNumber) {
         setPhoneNumber(phoneNumber)
         setPhoneNumberError(''); // Clear the error message when typing
-        setEmailError(''); 
+        setEmailError('');
     }
 
     // start button handler
@@ -73,14 +75,20 @@ export default function Start({ navigation }) {
     return (
         <View style={Styles.container}>
             <View>
-                <MyTextInput label='Email Address' value={email} onChangeText={receiveEmailInput} keyboardType={"email-address"}/>
+                <PressableItem>
+                    <MyTextInput label='Email Address' value={email} onChangeText={receiveEmailInput} keyboardType={"email-address"} />
+                </PressableItem>
                 {emailError !== '' && <Text style={Styles.errorText}>{emailError}</Text>}
-                <MyTextInput label='Phone Number' value={phoneNumber} onChangeText={receivePhoneNumberInput} keyboardType={"phone-pad"}/>
+                <MyTextInput label='Phone Number' value={phoneNumber} onChangeText={receivePhoneNumberInput} keyboardType={"phone-pad"} />
                 {phoneNumberError !== '' && <Text style={Styles.errorText}>{phoneNumberError}</Text>}
             </View>
             <View style={Styles.buttonsView}>
-                <Button title='Reset' onPress={resetHandler} color={Colors.cancelResetColorRed}/>
-                <Button title='Start' onPress={startHandler} disabled={disableStartHandler()} />
+                <PressableButton onPress={resetHandler} customButtonStyle={Styles.cancelButton} >
+                    <Text style={Styles.buttonText}>Reset</Text>
+                </PressableButton>
+                <PressableButton onPress={startHandler} disabled={disableStartHandler()} customButtonStyle={Styles.saveButton} >
+                    <Text style={Styles.buttonText}>Start</Text>
+                </PressableButton>
             </View>
         </View>
     )

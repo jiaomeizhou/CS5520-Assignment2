@@ -89,7 +89,22 @@ export const Styles = StyleSheet.create({
         color: Colors.primaryPurpleColor,
         fontWeight: 'bold',
     },
-    pressed: {
+    pressedView: {
         opacity: 0.5,
+    },
+    defaultButtonStyle: {
+        paddingHorizontal: 50,
+        paddingVertical: 10,
+        borderRadius: 5,
+        textAlign: 'center',
+    },
+    cancelButton: {
+        backgroundColor: Colors.cancelResetColorRed,
+    },
+    saveButton: {
+        backgroundColor: Colors.headerColorPurple,
+    },
+    buttonText: {
+        color: Colors.primaryWhiteColor,
     },
 })

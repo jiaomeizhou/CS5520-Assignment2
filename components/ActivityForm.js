@@ -153,8 +153,12 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
 
                 {!show && (
                     <View style={Styles.buttonsView}>
-                        <Button title="Cancel" color={Colors.cancelResetColorRed} onPress={onCancel} />
-                        <Button title="Save" onPress={handleSaveActivity} />
+                        <PressableButton onPress={onCancel} customButtonStyle={Styles.cancelButton}>
+                            <Text style={Styles.buttonText}>Cancel</Text>
+                        </PressableButton>
+                        <PressableButton onPress={handleSaveActivity} customButtonStyle={Styles.saveButton}>
+                            <Text style={Styles.buttonText}>Save</Text>
+                        </PressableButton>
                     </View>
                 )}
             </View>
