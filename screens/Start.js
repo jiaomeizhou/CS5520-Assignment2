@@ -75,9 +75,7 @@ export default function Start({ navigation }) {
     return (
         <View style={Styles.container}>
             <View>
-                <PressableItem>
-                    <MyTextInput label='Email Address' value={email} onChangeText={receiveEmailInput} keyboardType={"email-address"} />
-                </PressableItem>
+                <MyTextInput label='Email Address' value={email} onChangeText={receiveEmailInput} keyboardType={"email-address"} />
                 {emailError !== '' && <Text style={Styles.errorText}>{emailError}</Text>}
                 <MyTextInput label='Phone Number' value={phoneNumber} onChangeText={receivePhoneNumberInput} keyboardType={"phone-pad"} />
                 {phoneNumberError !== '' && <Text style={Styles.errorText}>{phoneNumberError}</Text>}

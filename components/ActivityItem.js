@@ -16,7 +16,7 @@ export default function ActivityItem({ activityObj, onEdit}) {
     }
 
     return (
-        <Pressable onPress={activityPressHandler}>
+        <PressableItem onPress={activityPressHandler}>
             <View style={Styles.activityItem}>
                 <Text style={Styles.activityText}>{activityObj.name}</Text>
                 {activityObj.isSpecial && <Entypo name="warning" size={24} color={Colors.focusColorYellow} />}
@@ -25,6 +25,6 @@ export default function ActivityItem({ activityObj, onEdit}) {
                     <Text style={Styles.activityDateDuration}>{activityObj.duration} min</Text>
                 </View>
             </View>
-        </Pressable>
+        </PressableItem>
     )
 }
