@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
-import AddActivityButton from '../components/AddActivityButton'
+import HeaderRightButton from '../components/HeaderRightButton'
 import ActivityList from '../components/ActivityList'
 import { Styles } from '../components/Styles'
 
@@ -11,7 +11,7 @@ export default function SpecialActivities({ navigation }) {
     useEffect(() => {
         navigation.setOptions({
             headerRight: () => {
-                return <AddActivityButton navigation={navigation} />
+                return <HeaderRightButton navigation={navigation} onPress={() => navigation.navigate('AddAnActivity')} title="add" />
             },
             headerTitle: "Special Activities",
             headerStyle: Styles.header,
@@ -23,7 +23,7 @@ export default function SpecialActivities({ navigation }) {
     return (
         <View>
             {/* show all special activities */}
-            <ActivityList currentScreen={"SpecialActivities"} navigation={navigation}/>
+            <ActivityList currentScreen={"SpecialActivities"} navigation={navigation} />
         </View>
     )
 }

@@ -107,4 +107,8 @@ export const Styles = StyleSheet.create({
     buttonText: {
         color: Colors.primaryWhiteColor,
     },
+    headerButton: {
+        paddingHorizontal: 5,
+        margin: 5,
+    }
 })

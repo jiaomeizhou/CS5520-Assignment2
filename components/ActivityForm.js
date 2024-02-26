@@ -10,6 +10,7 @@ import { deleteFromDB } from '../firebase-files/firestoreHelper';
 import { AntDesign } from '@expo/vector-icons';
 import PressableButton from './PressableButton';
 import Checkbox from 'expo-checkbox';
+import HeaderRightButton from './HeaderRightButton';
 
 // This screen is used to add an activity to the list of activities
 export default function ActivityForm({ title, onSubmit, onCancel, initialValues, navigation }) {
@@ -22,11 +23,13 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
             headerTitleStyle: Styles.headerTitle,
             ...(title === 'Edit' && {
                 headerRight: () => (
-                    <PressableButton
-                        onPress={handleDeleteActivity}
-                    >
-                        <AntDesign name="delete" size={24} color="black" />
-                    </PressableButton>
+                    // <PressableButton
+                    //     onPress={handleDeleteActivity}
+                    //     customButtonStyle={Styles.headerButton}
+                    // >
+                    //     <AntDesign name="delete" size={24} color={Colors.primaryWhiteColor} />
+                    // </PressableButton>
+                    <HeaderRightButton navigation={navigation} onPress={handleDeleteActivity} title="edit" />
                 ),
             }),
         });
