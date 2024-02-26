@@ -11,6 +11,7 @@ export default function HeaderRightButton({ navigation, onPress, title}) {
 
   return (
     <PressableButton customButtonStyle={Styles.headerButton} onPress={onPress} >
+      {/* show add icon if title is "add", show delete icon if title is "edit" */}
       {title === "add" && <Ionicons name="add" size={24} color={Colors.primaryWhiteColor} />}
       {title === "edit" && <AntDesign name="delete" size={24} color={Colors.primaryWhiteColor} />}
     </PressableButton>

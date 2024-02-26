@@ -16,6 +16,7 @@ export default function ActivityItem({ activityObj, onEdit}) {
     }
 
     return (
+        // PressableItem is a custom component that provides feedback when pressed
         <PressableItem onPress={activityPressHandler}>
             <View style={Styles.activityItem}>
                 <Text style={Styles.activityText}>{activityObj.name}</Text>

@@ -109,6 +109,6 @@ export const Styles = StyleSheet.create({
     },
     headerButton: {
         paddingHorizontal: 5,
-        margin: 5,
+        marginRight: 10,
     }
 })

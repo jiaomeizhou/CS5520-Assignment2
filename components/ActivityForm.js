@@ -154,6 +154,7 @@ export default function ActivityForm({ title, onSubmit, onCancel, initialValues,
                     </View>
                 )}
 
+                 {/* Show the buttons only if the show state is false */}
                 {!show && (
                     <View style={Styles.buttonsView}>
                         <PressableButton onPress={onCancel} customButtonStyle={Styles.cancelButton}>

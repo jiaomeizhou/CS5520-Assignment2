@@ -1,6 +1,10 @@
 import { collection, addDoc, deleteDoc, doc, updateDoc} from "firebase/firestore";
 import { database } from "./firebaseSetup";
 
+// This file contains the helper functions
+// to read, write, update and delete data from the Firestore database
+
+// Read data from the Firestore database
 export async function writeToDB(activity) {
     try {
         const docRef = await addDoc(collection(database, "activities"), activity);
@@ -11,6 +15,7 @@ export async function writeToDB(activity) {
     }
 }
 
+// Write data to the Firestore database
 export async function deleteFromDB(id) {
     try {
         await deleteDoc(doc(database, "activities", id));
@@ -20,6 +25,7 @@ export async function deleteFromDB(id) {
     }
 }
 
+// Update data in the Firestore database
 export async function updateDB(id, updatedActivity) {
     try {
         await updateDoc(doc(database, "activities", id), updatedActivity);
