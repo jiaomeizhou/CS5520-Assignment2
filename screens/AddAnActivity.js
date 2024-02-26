@@ -22,9 +22,9 @@ export default function AddAnActivity({ navigation }) {
   // Cancel the activity and navigate to the previous screen
   function handleCancelActivity() {
     console.log('cancel activity')
-    setName(null)
-    setDuration(null)
-    setDate(new Date())
+    // setName(null)
+    // setDuration(null)
+    // setDate(new Date())
     navigation.goBack();
   }
 
