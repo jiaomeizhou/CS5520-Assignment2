@@ -89,5 +89,7 @@ export const Styles = StyleSheet.create({
         color: Colors.primaryPurpleColor,
         fontWeight: 'bold',
     },
-    
+    pressed: {
+        opacity: 0.5,
+    },
 })

@@ -3,7 +3,7 @@ import React from 'react'
 import { Entypo } from '@expo/vector-icons';
 import { Styles } from './Styles'
 import * as Colors from './Color'
-import { Pressable } from 'react-native';
+import PressableItem from './PressableItem';
 
 // This component is a single activity item with name, date, and duration
 export default function ActivityItem({ activityObj, onEdit}) {
@@ -15,7 +15,7 @@ export default function ActivityItem({ activityObj, onEdit}) {
     }
 
     return (
-        <Pressable onPress={activityPressHandler}>
+        <PressableItem onPress={activityPressHandler}>
             <View style={Styles.activityItem}>
                 <Text style={Styles.activityText}>{activityObj.name}</Text>
                 {activityObj.isSpecial && <Entypo name="warning" size={24} color={Colors.focusColorYellow} />}
@@ -24,6 +24,6 @@ export default function ActivityItem({ activityObj, onEdit}) {
                     <Text style={Styles.activityDateDuration}>{activityObj.duration} min</Text>
                 </View>
             </View>
-        </Pressable>
+        </PressableItem>
     )
 }
