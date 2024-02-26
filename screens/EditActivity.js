@@ -7,13 +7,17 @@ export default function EditActivity({ route, navigation }) {
     const { activityDetails } = route.params;
     console.log("activityDetails", activityDetails)
 
-    function handleSpecialActivity(name, duration) {
+    function isSpecialActivity(name, duration) {
         return (name === 'Running' || name === 'Weights') && duration > 60;
     }
 
     const handleSaveActivity = (updatedActivity) => {
         // TODO: when the activity is updated, check if it is a special activity
         // updatedActivity.isSpecial = handleSpecialActivity(updatedActivity.name, updatedActivity.duration);
+        if (updatedActivity.isSpecial && !isSpecialActivity(updatedActivity.name, updatedActivity.duration)) {
+            updatedActivity.isSpecial = false;
+        }
+
         Alert.alert(
             "Impotant",
             "Are you sure you want to save these changes?",
