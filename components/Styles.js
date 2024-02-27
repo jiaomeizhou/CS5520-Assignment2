@@ -79,5 +79,36 @@ export const Styles = StyleSheet.create({
         padding: 5,
         marginRight: 3,
     },
-    
+    checkboxContainer: {
+        flexDirection: 'row',
+        marginTop: 100,
+        margin: 10,
+    },
+    checkboxText: {
+        marginRight: 5,
+        color: Colors.primaryPurpleColor,
+        fontWeight: 'bold',
+    },
+    pressedView: {
+        opacity: 0.5,
+    },
+    defaultButtonStyle: {
+        paddingHorizontal: 50,
+        paddingVertical: 10,
+        borderRadius: 5,
+        textAlign: 'center',
+    },
+    cancelButton: {
+        backgroundColor: Colors.cancelResetColorRed,
+    },
+    saveButton: {
+        backgroundColor: Colors.headerColorPurple,
+    },
+    buttonText: {
+        color: Colors.primaryWhiteColor,
+    },
+    headerButton: {
+        paddingHorizontal: 5,
+        marginRight: 10,
+    }
 })
